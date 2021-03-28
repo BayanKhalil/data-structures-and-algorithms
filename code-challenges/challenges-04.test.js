@@ -7,7 +7,11 @@ Write a function called addTwo that takes in an array and adds two to every valu
 ------------------------------------------------------------------------------------------------ */
 
 const addTwo = (arr) => {
-
+  const newArr=[];
+  arr.forEach(element=>{
+    newArr.push(element+=2)
+  }); 
+return newArr; 
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +79,14 @@ CHALLENGE 6
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 const citiesAtoJ = (arr) => {
-  
+  const regx=/^[A-J]/g;
+  const result=[];
+  arr.forEach(item=>{
+    if (regex.test(item)){
+      result.push(item)
+    }
+  })
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
