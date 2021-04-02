@@ -19,7 +19,7 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj){
-  // Solution code here...
+  return Object.entries(obj).map(a=>`<li>${a[0]}: ${a[1]}</li>`);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,7 +30,8 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  // Solution code here...
+  return arr.reduce((accumulator,element)=>{return accumulator+element},
+  0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,7 +47,9 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  return arr.reduce((accumulator,element)=>{
+    return accumulator+=element.purchasePrice;
+  },0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +138,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 const reversedString = (str) => {
   const realArr = str.split('');
   const result = realArr.reduce((accumulator, item) => {
-    acc.unshift(item);
+    accumulator.unshift(item);
     return accumulator;
   }, []);
   return result.join('');
