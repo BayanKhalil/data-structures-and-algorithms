@@ -55,8 +55,24 @@ let characters = [
 ];
 
 const sortByChildren = (charArray) => {
-  charArray.sort((a,b)=>a.children.length - b.children.length);
-
+  const arrayValues = Object.values(charArray);
+  arrayValues.sort((a,b) => {
+    let returnValue;
+    let sub = a.children.length - b.children.length;
+    if (sub == 0){
+      if(a.name < b.name){
+        returnValue = -1;
+      }else if (a.name == b.name){
+        returnValue = 0;
+      }else if (a.name > b.name){
+        returnValue = 1;
+      }
+    }else{
+      returnValue = sub
+    }
+    return returnValue;
+  })
+  return arrayValues;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +100,7 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-    const objForValues=Object.values(obj);
+  const objForValues=Object.values(obj);
     let outputValue=false;
     for (let i = 0; i < objForValues.length; i++){
       if (objForValues[i] == value){
@@ -92,7 +108,7 @@ const checkValues = (obj, value) => {
         break;
       }
     }
-    return valueExist;
+    return outputValue;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,11 +149,11 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
-  const valuesForArr = Object.values(arr);
+  const valuesForArr =sortByChildren(arr);
   valuesForArr.forEach(a=>{
     houses.push(a.house)
   })
-  return arr;
+  return houses;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -162,6 +178,7 @@ const hasChildrenValues = (arr, character) => {
       }
     }
   }
+
 };
 
 /* ------------------------------------------------------------------------------------------------
