@@ -8,7 +8,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
-  // Solution code here...
+  return str.split("").filter(a => a !== "h");
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -20,9 +20,7 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
- arr.filter(function(item) {
-    return (typeof item === "number")
-  });
+  return arr.filter(a => typeof a == "number")
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,7 +32,8 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 ------------------------------------------------------------------------------------------------ */
 
 const containsAnd = (arr) => {
-  // Solution code here...
+  const regex = /(\w+)?and(\w+)?/;
+  return arr.filter(item => regex.test(item));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,8 +46,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   let odd = arr.filter( n=>(n%2) )
-    return odd;
-  };
+  return odd;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -68,7 +67,8 @@ const filterStringsWithVowels = (arr) => {
   {
     return rex.test(item);
   });
-  return theVowels;};
+  return theVowels;
+};
 
 
 /* ------------------------------------------------------------------------------------------------
