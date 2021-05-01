@@ -112,7 +112,8 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  // Solution code here...
+  arr.sort((a,b)=>a.toLowerCase()>b.toLowerCase()?1:-1);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,7 +123,7 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  // Solution code here...
+arr.sort((a,b)=>a.length-b.length)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,7 +135,8 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) => {
-  // Solution code here...
+  arr.sort((a,b)=>a.toString().length-b.toString().length);
+  return arr;
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -156,7 +158,8 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+arr.sort((a,b)=a.lastName.toUpperCase()<b.lastName.toUpperCase()?-1:1)
+return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,7 +173,18 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  arr.sort((a, b) => {
+  if (a.lastName.toUpperCase()==b.lastName.toUpperCase()&& a.firstName.toUpperCase()==b.firstName.toUpperCase()){
+    return a.age-b.age;
+  }else{
+    if(a.lastName==b.lastName){
+      return (a.firstName.toUpperCase()<b.firstName.toUpperCase()?-1:1)
+    }else{
+      return (a.lastName.toUpperCase()<b.lastName.toUpperCase()?-1:1)
+    }
+  }
+})
+return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -197,6 +211,11 @@ const meetings = [
 
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  let order = {Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5}
+  arr.sort((a, b) => {
+    return order[a.dayOfWeek] - order[b.dayOfWeek];
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,7 +229,14 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
+  arr.sort((a, b) => {
+    if (a.dayOfWeek == b.dayOfWeek) {
+      return (parseInt(a.end) - parseInt(a.start)) - (parseInt(b.end) - parseInt(b.start));
+    } else {
+      return 0;
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
