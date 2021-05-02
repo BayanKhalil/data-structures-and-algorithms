@@ -158,7 +158,9 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
+
 arr.sort((a,b)=>a.lastName.toUpperCase()<b.lastName.toUpperCase()?-1:1)
+
 return arr;
 };
 
